@@ -1,2 +1,8 @@
-<h1>Home#index</h1>
+<h1>Bienvenido a SIGEF </h1>
+<% if user_signed_in? %>
+    <p>Has iniciado sesión</p>
+    <%= link_to  "Cerrar Sesión", destroy_user_session_path, method: :delete %>
+<%else%>
+    <%= link_to  "Iniciar Sesión", new_user_session_path %>
+<%end%>
 <p>Find me in app/views/home/index.html.erb</p>
