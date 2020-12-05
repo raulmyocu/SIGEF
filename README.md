@@ -6,6 +6,7 @@ rvm --default use ruby-2.7.0
 gem install rails -v 6.0.3.4
 bundle install
 ```
+[Commit message emoji format](https://gitmoji.carloscuesta.me)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
