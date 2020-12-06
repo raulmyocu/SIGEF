@@ -10,7 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_014121) do
+ActiveRecord::Schema.define(version: 2020_12_06_184613) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "efacs", force: :cascade do |t|
+    t.string "name"
+    t.string "modality"
+    t.string "objectives"
+    t.string "content_type"
+    t.string "eval_method"
+    t.integer "duration"
+    t.string "resources"
+    t.string "references"
+    t.string "utility"
+    t.string "participation_requirements"
+    t.string "acreditation_requirements"
+    t.string "operative_conditions"
+    t.string "resources_availability"
+    t.integer "fee"
+    t.string "instructor_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "instructor_experience"
+    t.string "content"
+    t.integer "user_id", null: false
+    t.boolean "sent"
+    t.string "responsible_name"
+    t.index ["user_id"], name: "index_efacs_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +74,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_014121) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "efacs", "users"
 end

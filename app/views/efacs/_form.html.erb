@@ -1,0 +1,143 @@
+<%= form_with(model: efac, local: true) do |form| %>
+  <% if efac.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(efac.errors.count, "error") %> prohibited this efac from being saved:</h2>
+
+      <ul>
+        <% efac.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%=form.label "Nombre del Evento Formativo:"%>
+    <%=form.text_field :name%>
+  </div> 
+
+
+  <div>
+    <%=form.label "Tipo de evento:"%>
+    <%= form.select :content_type, options_for_select([ "Taller", "Curso", "Diplomado", "Programa especial"]), id: 'tipo'%>
+  </div>
+
+
+  <div>
+    <%=form.label "Modalidad:"%>
+    <%= form.select :modality, options_for_select(["Presencial", "En línea", "Mixta"]), id: 'tipo'%>
+  </div>
+  
+
+  <div>
+    <%=form.label "Duración (Horas)"%>
+    <%=form.number_field :duration%>
+  </div> 
+
+
+  <div>
+    <%=form.label "Cuota"%>
+    <%=form.number_field :fee%>
+  </div>
+
+  <div>
+    <%=form.label "Instructor"%>
+    <%=form.text_field :instructor_name%>
+  </div>
+
+  <div>
+    <%=form.label "Experiencia del instructor"%>
+    <%=form.text_field :instructor_experience%>
+  </div>
+
+  <div>
+    <%=form.label "Currículum sintético del instructor (PDF)"%>
+    <%=form.file_field :instructor_resumee%>
+  </div>
+
+
+  <div>
+    <%=form.label "Programa:"%>
+  </div>
+  <div>
+    <%= form.text_area :content, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Objetivos:"%>
+  </div>
+  <div>
+    <%= form.text_area :objectives, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Referencias teóricas y metodológicas:"%>
+  </div>
+  <div>
+    <%= form.text_area :references, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Método de evaluación:"%>
+  </div>
+  <div>
+    <%= form.text_area :eval_method, :cols => 40, :rows => 10%>
+  </div>
+  
+
+  <div>
+    <%=form.label "Requisitos de acreditación"%>
+  </div>
+  <div>
+    <%= form.text_area :acreditation_requirements, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Utilidad y oportunidad del evento"%>
+  </div>
+  <div>
+    <%= form.text_area :utility, :cols => 40, :rows => 10%>
+  </div>
+  
+
+  <div>
+    <%=form.label "Requisitos de participación"%>
+  </div>
+  <div>
+    <%= form.text_area :participation_requirements, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Condiciones operativas"%>
+  </div>
+  <div>
+    <%= form.text_area :operative_conditions, :cols => 40, :rows => 10%>
+  </div>
+
+
+
+  <div>
+    <%=form.label "Recursos y materiales didácticos de apoyo:"%>
+  </div>
+  <div>
+    <%= form.text_area :resources, :cols => 40, :rows => 10%>
+  </div>
+
+
+  <div>
+    <%=form.label "Capacidad de autofinanciamiento o disponibilidad de recursos"%>
+  </div>
+  <div>
+    <%= form.text_area :resources_availability, :cols => 40, :rows => 10%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  
+<% end %>

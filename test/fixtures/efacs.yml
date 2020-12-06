@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  modality: MyString
+  objectives: MyString
+  content_type: MyString
+  eval_method: MyString
+  duration: MyString
+  resources: MyString
+  references: MyString
+  utility: MyString
+  participation_requirements: MyString
+  acreditation_requirements: MyString
+  operative_conditions: MyString
+  resources_availability: MyString
+  fee: MyString
+  instructor_name: MyString
+  instructor_resumee: MyString
+
+two:
+  name: MyString
+  modality: MyString
+  objectives: MyString
+  content_type: MyString
+  eval_method: MyString
+  duration: MyString
+  resources: MyString
+  references: MyString
+  utility: MyString
+  participation_requirements: MyString
+  acreditation_requirements: MyString
+  operative_conditions: MyString
+  resources_availability: MyString
+  fee: MyString
+  instructor_name: MyString
+  instructor_resumee: MyString
