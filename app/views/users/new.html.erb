@@ -1,0 +1,20 @@
+<%= form_with(model: @user) do |form| %>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :permission %>
+    <%= form.select :permission, User.permissions.keys.map {|role| [role.titleize,role]} %>
+  </div>
+  <div>
+    <%= form.hidden_field :password, :value => Devise.friendly_token.first(8) %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
