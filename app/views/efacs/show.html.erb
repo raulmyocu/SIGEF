@@ -1,0 +1,93 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @efac.name %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= @efac.responsible_name %>
+</p>
+
+<p>
+  <strong>Modality:</strong>
+  <%= @efac.modality %>
+</p>
+
+<p>
+  <strong>Objectives:</strong>
+  <%= @efac.objectives %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @efac.content_type %>
+</p>
+
+<p>
+  <strong>Eval method:</strong>
+  <%= @efac.eval_method %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @efac.duration %>
+</p>
+
+<p>
+  <strong>Resources:</strong>
+  <%= @efac.resources %>
+</p>
+
+<p>
+  <strong>References:</strong>
+  <%= @efac.references %>
+</p>
+
+<p>
+  <strong>Utility:</strong>
+  <%= @efac.utility %>
+</p>
+
+<p>
+  <strong>Participation requirements:</strong>
+  <%= @efac.participation_requirements %>
+</p>
+
+<p>
+  <strong>Acreditation requirements:</strong>
+  <%= @efac.acreditation_requirements %>
+</p>
+
+<p>
+  <strong>Operative conditions:</strong>
+  <%= @efac.operative_conditions %>
+</p>
+
+<p>
+  <strong>Resources availability:</strong>
+  <%= @efac.resources_availability %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @efac.fee %>
+</p>
+
+<p>
+  <strong>Instructor name:</strong>
+  <%= @efac.instructor_name %>
+</p>
+
+<p>
+  <strong>Instructor resumee:</strong>
+  <%= image_tag url_for(@efac.instructor_resumee), height:30 %>
+  <%=  %>
+</p>
+
+<%= link_to 'Back', efacs_path %>
+  <% if not @efac.sent %>  
+  | <%= link_to 'Edit', edit_efac_path(@efac) %> 
+  <%=link_to("Presentar", efac_present_path(@efac), data: { confirm: '¿Seguro que desea presentar el Evento Formativo?'}, :method => :post)%>
+<% end %>

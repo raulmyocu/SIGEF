@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum permission: [ :admin, :instance, :responsible, :instructor ]
+
+  has_many :efacs
 end
