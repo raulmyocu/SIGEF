@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <p><b> <%= user.name %> </b></p>
+  <p><i> <%= user.permission %> </i></p>
+  <p> <%= user.email %> </p>
+  <%= link_to  "Editar Usuario", edit_user_path(user.id) %>
+  <% if user != current_user %>
+    <%= link_to  "Eliminar Usuario", user, method: :delete %>
+  <% end %>
+<% end %>
