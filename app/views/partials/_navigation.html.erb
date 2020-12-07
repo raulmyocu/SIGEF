@@ -1,0 +1,31 @@
+
+<div class="top-bar">    
+  <% if user_signed_in? %>
+  <div>
+    <h2> <%= title %></h2>
+  </div>
+  <div>
+
+    <div class="dropdown">
+      <button class="dropbtn">
+        <i class="far fa-bell"></i>
+      </button>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <i class="icon-user fas fa-user-circle"></i>
+        &nbsp; <%= current_user.name %>
+      </button>
+      <div class="dropdown-content">
+        <a href="">Opciones</a>
+        <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+    <% else %>
+    <li>
+      <%= link_to 'Iniciar sesion', new_user_session_path %>
+    </li>
+    <% end %>
+  </div>
+
+</div>

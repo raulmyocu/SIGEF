@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_184613) do
+ActiveRecord::Schema.define(version: 2020_12_06_230512) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_12_06_184613) do
     t.integer "user_id", null: false
     t.boolean "sent"
     t.string "responsible_name"
+    t.integer "instance_id"
+    t.integer "state"
+    t.string "reason"
+    t.index ["instance_id"], name: "index_efacs_on_instance_id"
     t.index ["user_id"], name: "index_efacs_on_user_id"
   end
 

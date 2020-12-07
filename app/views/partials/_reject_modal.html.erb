@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="reject" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h4>Aviso</h4>
+          Por favor, introduzca la razón por la que <%= @efac.name %> es rechazado
+
+        <%= render 'reject_form', efac: @efac %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

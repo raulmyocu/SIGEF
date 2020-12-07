@@ -1,6 +1,8 @@
 class Efac < ApplicationRecord
     has_one_attached :instructor_resumee
     belongs_to :user
+
+    enum state: [ :editing, :waiting, :aproved, :rejected ]
     
     validates :name, presence: true
     validates :modality, presence: true
