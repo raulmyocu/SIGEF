@@ -1,93 +1,150 @@
-<p id="notice"><%= notice %></p>
+  <p>
+    Listado de eventos formativos > <%= @efac.name%>
+  </p>
+  <%= link_to 'Regresar', efacs_path %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @efac.name %>
-</p>
 
-<p>
-  <strong>Responsible:</strong>
-  <%= @efac.responsible_name %>
-</p>
+  <div class="show-efac">
+    <div class="side-1">
+    <h3>
+      <%= @efac.name %>
+    </h3>
+    <br>
 
-<p>
-  <strong>Modality:</strong>
-  <%= @efac.modality %>
-</p>
+    <p>
+      <strong>Responsable:</strong>
+      <%= @efac.responsible_name %>
+    </p> 
+    <p>
+      <strong>Instancia responsable:</strong>
+      <%= User.find(@efac.instance_id).name %>
+    </p>
+    <br>
+    <p>
+      <strong>Objetivos:</strong>
+      <%= @efac.objectives %>
+    </p>
+    <p>
+      <strong>Duracion:</strong>
+      <%= @efac.duration %> horas
+    </p>
 
-<p>
-  <strong>Objectives:</strong>
-  <%= @efac.objectives %>
-</p>
+    <br>
 
-<p>
-  <strong>Content type:</strong>
-  <%= @efac.content_type %>
-</p>
+    <p>
+      <strong>Requisitos de participacion:</strong>
+      <%= @efac.participation_requirements %>
+    </p>
+    <br>
+    <p>
+      <strong>Acreditation requirements:</strong>
+      <br>
+      <%= @efac.acreditation_requirements %>
+    </p>
+    <br>
 
-<p>
-  <strong>Eval method:</strong>
-  <%= @efac.eval_method %>
-</p>
+    <p>
+      <strong>Operative conditions:</strong>
+      <br>
+      <%= @efac.operative_conditions %>
+    </p>
+    <br>
+    <p>
+      <strong>Resources availability:</strong>
+      <br>
+      <%= @efac.resources_availability %>
+    </p>
+    <br>
+    <p>
+      <strong>Fee:</strong>
+      <%= @efac.fee %>
+    </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @efac.duration %>
-</p>
+    <p>
+      <strong>Instructor name:</strong>
+      <%= @efac.instructor_name %>
+    </p>
 
-<p>
-  <strong>Resources:</strong>
-  <%= @efac.resources %>
-</p>
+    <p>
+      <strong>Instructor resumee:</strong>
+      <%= image_tag url_for(@efac.instructor_resumee), height:30 %>
+    </p>
+    <br>
 
-<p>
-  <strong>References:</strong>
-  <%= @efac.references %>
-</p>
+    <p>
+      <strong>State:</strong>
+      <%= @efac.state %>
+    </p>
 
-<p>
-  <strong>Utility:</strong>
-  <%= @efac.utility %>
-</p>
+    <% if @efac.reason %>
+      <p>
+        <strong>Razon de rechazo:</strong>
+        <%= @efac.reason %>
+      </p>
+    <% end %>
 
-<p>
-  <strong>Participation requirements:</strong>
-  <%= @efac.participation_requirements %>
-</p>
-
-<p>
-  <strong>Acreditation requirements:</strong>
-  <%= @efac.acreditation_requirements %>
-</p>
-
-<p>
-  <strong>Operative conditions:</strong>
-  <%= @efac.operative_conditions %>
-</p>
-
-<p>
-  <strong>Resources availability:</strong>
-  <%= @efac.resources_availability %>
-</p>
-
-<p>
-  <strong>Fee:</strong>
-  <%= @efac.fee %>
-</p>
-
-<p>
-  <strong>Instructor name:</strong>
-  <%= @efac.instructor_name %>
-</p>
-
-<p>
-  <strong>Instructor resumee:</strong>
-  <%= image_tag url_for(@efac.instructor_resumee), height:30 %>
-  <%=  %>
-</p>
-
-<%= link_to 'Back', efacs_path %>
+    </div>
+  <div>
+    
   <% if not @efac.sent %>  
-  | <%= link_to 'Edit', edit_efac_path(@efac) %> 
-  <%=link_to("Presentar", efac_present_path(@efac), data: { confirm: '¿Seguro que desea presentar el Evento Formativo?'}, :method => :post)%>
-<% end %>
+  <div class="botones">
+
+    <%=link_to("Editar", edit_efac_path(@efac), class: "editar")%>
+    <%=link_to("Presentar", efac_present_path(@efac), data: { confirm: '¿Seguro que desea presentar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
+    
+  </div>
+  <% end%>
+  
+
+  <% if current_user.instance? %>
+    <div class="botones">
+        <%=link_to("Aprobar", efac_aprove_path(@efac), data: { confirm: '¿Seguro que desea aprobar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
+        <a class="rechazar" data-toggle="modal" data-target="#confirmation">Rechazar</a>
+      
+    </div>
+    <!-- Trigger the modal with a button -->
+  <% end %>
+    <div class="side-2">
+      <p>
+        <strong>Modality:</strong>
+        <%= @efac.modality %>
+      </p>
+      <br>
+      <p>
+        <strong>Content type:</strong>
+        <%= @efac.content_type %>
+      </p>
+
+      <br>
+
+      <p>
+        <strong>Eval method:</strong>
+        <%= @efac.eval_method %>
+      </p>
+      <br>
+
+      <p>
+        <strong>Resources:</strong>
+        <%= @efac.resources %>
+      </p>
+      <br>
+
+      <p>
+        <strong>References:</strong>
+        <%= @efac.references %>
+      </p>
+      <br>
+
+      <p>
+        <strong>Utility:</strong>
+        <%= @efac.utility %>
+      </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <%= render 'partials/show_modal', efac: @efac%>
+  <%= render 'partials/reject_modal', efac: @efac%>

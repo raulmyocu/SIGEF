@@ -22,6 +22,10 @@
     <%= form.select :content_type, options_for_select([ "Taller", "Curso", "Diplomado", "Programa especial"]), id: 'tipo'%>
   </div>
 
+  <div>
+    <%=form.label "Instancia responsable:"%>
+    <%= form.select :instance_id, User.where(permission: "instance").collect {|u| [u.name, u.id]}, id: 'tipo' %>
+  </div>
 
   <div>
     <%=form.label "Modalidad:"%>
@@ -135,6 +139,7 @@
   <div>
     <%= form.text_area :resources_availability, :cols => 40, :rows => 10%>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

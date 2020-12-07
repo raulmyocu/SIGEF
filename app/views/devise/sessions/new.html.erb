@@ -1,57 +1,55 @@
 <!-- Log in -->
 
- <!-- Page content -->
- <div class="w3-container" style="margin-top: 43px;">
+<div class="welcome">
 
 
-   <div class="container-fluid">
-     <div class="jumbotron jumbotron-fluid"">
-       <div class="container">
-         <h1>Bienvenido a SIGEF</h1>
-         <p>SIstema de GEstion de Eventos Formativos</p>
-         <br>
+  <div class="welcome-banner">
+    <h1>SIGEF</h1>
+  </div>
 
-         <p>Inicia sesión para continuar</p>
-     </div>
-   </div>
-   </div>
+  <% if notice %>
+    <p class="alert alert-primary"><%= notice %></p>
+  <%end%>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <%end%> 
 
-   <div class="container">
+  <div class="inicio-sesion">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div>
+        <%= label_tag(type: 'tag') do %>
+          Email
+          <% end %>
+          <br>
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+      </div>
+      <br>
+      <div>
+        <%= label_tag(type: 'tag') do %>
+          Contraseña
+          <% end %>
+          <br>
+        <%= f.password_field :password, class: 'form-control', autocomplete: "current-password"%>
+      </div>
 
-     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-     <div>
-       <%= label_tag(type: 'tag') do %>
-       <i class="icon-ok icon-white"></i> Email
-       <% end %>
-       <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email",  :style => "width:70%" %>
-     </div>
-     <div>
-       <%= label_tag(type: 'tag') do %>
-       <i class="icon-ok icon-white"></i> Contraseña
-       <% end %>
-       <%= f.password_field :password, class: 'form-control', autocomplete: "current-password",  :style => "width:70%"  %>
-     </div>
-     <br>
+      <br>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :Recordarme %>
+        </div>
+      <% end %>
 
-     <% if devise_mapping.rememberable? %>
-     <div class="field">
-       <%= f.check_box :remember_me %>
-       <%= f.label :Recordarme %>
-     </div>
-     <% end %>
-
-     <div>
-        <br>
+      <div>
+        <br><br>
         <%= button_tag(type: 'submit', class: "btn btn-outline-secondary") do %>
-          <i class="icon-ok icon-white"></i> Iniciar sesión
+        Iniciar sesión
         <% end %>
-     </div>
+      </div>
+    <% end %>
+    <br>
+    <%= render "devise/shared/links" %>
 
-     <% end %>
-     <br>
+  </div>
+</div>
 
-     <%= render "devise/shared/links" %>
-
-
-   </div>
-   </div>

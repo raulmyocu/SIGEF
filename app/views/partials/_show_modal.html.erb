@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="confirmation" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h4>Aviso</h4>
+            <p>
+                ¿Está seguro que quiere rechazar el evento 
+                <%= @efac.name %>?
+            </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reject">Rechazar evento</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

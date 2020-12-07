@@ -13,3 +13,202 @@
  *= require_tree .
  *= require_self
  */
+
+
+:root {
+    --mainBlue: #125593;
+    --mainGreen: #7FC27E;
+    --mainRed: #B12C2C;
+    --mainYellow: #ECCB1F;
+    --darkBlue: #17202D;
+    --mainLight: #EDF0F2;
+}
+
+* {
+    margin: 0 !important;
+    padding: 0;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif !important;
+    font: 16px !important;
+    scroll-behavior: smooth !important;
+    line-height: 200% !important;
+    background-color: var(--mainLight);
+}
+
+/* Begin reutilizables */
+
+a {
+    text-decoration: none !important;
+    transition: 350ms;
+    color: var(--mainBlue) !important;
+}
+
+a:hover {
+    color: var(--mainYellow) !important;
+    transition: 350ms;
+}
+
+/* Begin welcome page */
+
+.welcome {
+    background-color: white;
+}
+.welcome-banner {
+    background-image: url("banner.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    margin: 5rem 0 5rem 0 !important;
+    height: 20rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.welcome-banner h1 {
+    font-size: 5rem;
+    color: white;
+    letter-spacing: 1rem;
+    
+}
+
+.inicio-sesion {
+    text-align: center;
+    padding: 0 25% 0 25%;
+}
+
+
+
+/* Begin navigation */
+
+.side-bar {
+    height: 100% !important;
+    width: 15%;
+    position: fixed;
+    background-color: var(--darkBlue);
+    padding-top: 4rem;
+}
+
+.side-bar a {
+    display: flex !important;
+    align-items: center !important;
+    color: white !important;
+    margin: 0 0 1rem 1rem !important;
+    border-radius: 50px 0 0 50px !important;
+    padding: 2rem 1rem 2rem 3rem !important;
+}
+
+.side-bar li.active a {
+    background-color: var(--mainLight) !important;
+    color: var(--darkBlue) !important;
+}
+
+.side-bar li.active:hover  a{
+    opacity: 100% !important;
+}
+
+.side-bar li:not(.active) a:hover {
+    background-color:#476288 !important;
+    transition: 350ms !important;
+    color: white !important;
+    opacity: 100% !important;
+}
+
+.side-bar .fas {
+    font-size: 30px !important;
+}
+.side-bar p {
+    margin-left: 1rem !important;
+}
+
+
+/* Start Top Bar */
+.top-bar {
+    margin-left: 15% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: var(--darkBlue);
+    height: 5.5rem;
+    padding: 0rem 5rem 0 3rem;
+    margin-bottom: 2rem;
+}
+.top-bar li a {
+    color: var(--darkBlue);
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.icon-user {
+    font-size: 40px;
+    color: var(--mainYellow);
+}
+
+.top-bar .far {
+    font-size: 30px; 
+    color: var(--darkBlue);
+}
+
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: 350ms;
+
+}
+  
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;  
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    transition: 350ms;
+    opacity: 25%;
+}
+
+/* Start content */
+.content {
+    margin-left: 15% !important;
+    padding: 3rem;
+    background-color: var(--mainLight);
+}

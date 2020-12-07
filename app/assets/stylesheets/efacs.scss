@@ -1,3 +1,98 @@
 // Place all the styles related to the Efacs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+:root {
+    --mainBlue: #125593;
+    --mainGreen: #7FC27E;
+    --mainRed: #B12C2C;
+    --mainYellow: #ECCB1F;
+    --darkBlue: #17202D;
+    --mainLight: #EDF0F2;
+}
+
+.efac-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 75%;
+    padding: 2rem;
+    box-shadow:  11px 11px 22px #b3b3b3, 
+             -11px -11px 22px #ffffff;
+    transition: 350ms; 
+    margin: 2rem 0 0 0 !important;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.ver {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+
+}
+
+.show-efac {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 1rem;
+    align-items: flex-start;
+}
+
+.show-efac div {
+    padding: 3rem;
+}
+
+.side-1, .side-2{
+
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.aprobar {
+    background-color: var(--mainGreen) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white !important;
+    width: 100%;
+}
+.aprobar:hover, .rechazar:hover, .editar:hover {
+    opacity: 50% !important;
+    color: white !important;
+}
+
+.rechazar {
+    background-color: var(--mainRed) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white !important;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.editar {
+    background-color: var(--mainBlue) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    color: white !important;
+    width: 100%;
+}
+
+.botones {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 1rem;
+    text-align: center;
+}
+
+.modal {
+    position: absolute !important;
+    left: 40% !important;
+    top: 10% !important; 
+}
+
+.forma-centrada {
+    text-align: center;
+}
+

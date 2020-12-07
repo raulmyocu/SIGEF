@@ -1,59 +1,50 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Efacs</h1>
+<h1>Evento formativos</h1>
+<p>
+  Listado de eventos formativos
+</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Modality</th>
-      <th>Objectives</th>
-      <th>Content type</th>
-      <th>Eval method</th>
-      <th>Duration</th>
-      <th>Resources</th>
-      <th>References</th>
-      <th>Utility</th>
-      <th>Participation requirements</th>
-      <th>Acreditation requirements</th>
-      <th>Operative conditions</th>
-      <th>Resources availability</th>
-      <th>Fee</th>
-      <th>Instructor name</th>
-      <th>Instructor resumee</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @efacs.each do |efac| %>
+<div class="efac-container">
+  <div>
 
-  <tbody>
-    <% @efacs.each do |efac| %>
-      <tr>
-        <td><%= efac.name %></td>
-        <td><%= efac.modality %></td>
-        <td><%= efac.objectives %></td>
-        <td><%= efac.content_type %></td>
-        <td><%= efac.eval_method %></td>
-        <td><%= efac.duration %></td>
-        <td><%= efac.resources %></td>
-        <td><%= efac.references %></td>
-        <td><%= efac.utility %></td>
-        <td><%= efac.participation_requirements %></td>
-        <td><%= efac.acreditation_requirements %></td>
-        <td><%= efac.operative_conditions %></td>
-        <td><%= efac.resources_availability %></td>
-        <td><%= efac.fee %></td>
-        <td><%= efac.instructor_name %></td>
-        <td><%= efac.instructor_resumee %></td>
-        <td><%= link_to 'Ver', efac %></td>
-        <% if not efac.sent %>
-          <td><%= link_to 'Editar', edit_efac_path(efac) %></td>
-          <td><%= link_to 'Eliminar', efac, method: :delete, data: { confirm: '¿Seguro que desea eliminar el Evento Formativo?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h4><%= efac.name%></h4>
+    <br>
+    <p>
+      Tipo didáctico: <%= efac.content_type %>
+    </p>
+    <br>
+    <p>
+      Responsable: <%= User.find(efac.user_id).name %>
+    </p>
+    <br>
 
-<br>
+    
 
-<%= link_to 'New Efac', new_efac_path %>
+    <% if efac.aproved? %>
+      <h5 style="color: green">
+        <%= efac.state %>
+      </h5>
+      <% elsif efac.rejected? %>
+      <h5 style="color: red">
+        <%= efac.state %>
+      </h5>
+      <% else %>
+      <h5 style="color: var(--mainBlue)">
+        <%= efac.state %>
+      </h5>
+      <% end %>
+
+
+  </div>
+  <div class="ver">
+    <%= link_to 'Ver solicitud', efac %>
+  </div>
+
+</div>
+
+<% end %>
+
+<% if current_user.responsible?%>
+  <%= link_to 'New Efac', new_efac_path %>
+<% end %>

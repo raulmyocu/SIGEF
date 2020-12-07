@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :users
   
   post 'efacs/present/:id', to: "efacs#present", as: "efac_present"
+  post 'efacs/aprove/:id', to: "efacs#aprove", as: "efac_aprove"
+  post 'efacs/reject', to: "efacs#reject", as: "efac_reject"
 
   root to: 'home#index'
 end

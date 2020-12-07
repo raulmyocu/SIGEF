@@ -1,0 +1,11 @@
+<%= form_for :rejection, url: "reject" do |form| %>
+    <div class="form-group forma-centrada">
+      <%=form.label "Razon de rechazo:"%>
+      <%= form.text_area :reason, :cols => 40, :rows => 10, :class => "form-control"%>
+      <%= form.hidden_field :id, :value => @efac.id %> 
+      <br>
+        <div class="actions">
+            <%= form.submit  "Rechazar evento", :class => "btn btn-danger" %>
+        </div>
+    </div>
+<% end  %>
