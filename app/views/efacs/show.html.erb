@@ -14,7 +14,7 @@
     <p>
       <strong>Responsable:</strong>
       <%= @efac.responsible_name %>
-    </p> 
+    </p>
     <p>
       <strong>Instancia responsable:</strong>
       <%= User.find(@efac.instance_id).name %>
@@ -67,7 +67,7 @@
 
     <p>
       <strong>Instructor resumee:</strong>
-      <%= image_tag url_for(@efac.instructor_resumee), height:30 %>
+      <%= link_to 'Descargar Archivo', @efac.instructor_resumee, target: :_blank %>
     </p>
     <br>
 
@@ -85,22 +85,22 @@
 
     </div>
   <div>
-    
-  <% if not @efac.sent %>  
+
+  <% if not @efac.sent %>
   <div class="botones">
 
     <%=link_to("Editar", edit_efac_path(@efac), class: "editar")%>
     <%=link_to("Presentar", efac_present_path(@efac), data: { confirm: '¿Seguro que desea presentar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
-    
+
   </div>
   <% end%>
-  
+
 
   <% if current_user.instance? %>
     <div class="botones">
         <%=link_to("Aprobar", efac_aprove_path(@efac), data: { confirm: '¿Seguro que desea aprobar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
         <a class="rechazar" data-toggle="modal" data-target="#confirmation">Rechazar</a>
-      
+
     </div>
     <!-- Trigger the modal with a button -->
   <% end %>
