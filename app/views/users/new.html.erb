@@ -13,6 +13,7 @@
   </div>
   <div>
     <%= form.hidden_field :password, :value => Devise.friendly_token.first(8) %>
+    <%= form.hidden_field :nologs, :value => false %>
   </div>
   <div>
     <%= form.submit %>

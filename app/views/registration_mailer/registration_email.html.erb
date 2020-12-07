@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <h1>Usted a sido registrado en SIGEF</h1>
+        <h4>(Sistema de Gestión de Eventos Formativos y de Capacitación de la Universidad de Sonora)</h4>
+        <p>Para empezar a utilizar la plataforma de SIGEF, <%= link_to 'puede hacerlo a través de este enlace', edit_password_url(@user, reset_password_token: @token) %></p>
+    </body>
+</html>

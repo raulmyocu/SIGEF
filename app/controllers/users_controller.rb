@@ -21,7 +21,13 @@ class UsersController < ApplicationController
 
       respond_to do |format|
         if @user.save
-          #RegistrationMailer.registration_email(@user, @user.password).deliver_later
+
+          raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
+          @user.reset_password_token = hashed
+          @user.reset_password_sent_at = Time.now.utc
+
+          RegistrationMailer.registration_email(@user, @user.password, raw).deliver_later
+          @user.save(validate: false)
           #redirect_to root_path
           format.html { redirect_to @user, notice: 'El usuario ha sido creada exitosamente.' }
           format.json { render :show, status: :created, location: @user }
