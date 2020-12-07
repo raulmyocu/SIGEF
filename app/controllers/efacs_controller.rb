@@ -94,6 +94,7 @@ class EfacsController < ApplicationController
         format.html { redirect_to efacs_url, notice: 'El Evento Formativo se ha aprobado.' }
       end
       # Enviar un correo
+      EvaluateMailer.approve_email(@efac.user, @efac.name).deliver_later
     end 
   end 
   def reject
@@ -106,6 +107,7 @@ class EfacsController < ApplicationController
         
         format.html { redirect_to efacs_url, notice: 'El Evento Formativo se ha rechazado.' }
         # Enviar un correo
+        EvaluateMailer.reject_email(@efac.user, @efac.name).deliver_later
       end 
     end 
   end 
