@@ -70,7 +70,11 @@
       <br>
       Currículum:
       <i>
-        <%= link_to "Archivo Adjunto", inst.resume, target: :_blank %>
+        <% if inst.resume then %>
+          <%= link_to "Archivo Adjunto", inst.resume, target: :_blank %>
+        <% else %>
+          No se ha adjuntado archivo
+        <% end %>
       </i>
       <br><hr>
     <% end %>
