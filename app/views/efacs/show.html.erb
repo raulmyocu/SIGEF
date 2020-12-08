@@ -56,21 +56,17 @@
     </p>
     <br>
     <p>
-      <strong>Cuota:</strong>
-      $ <%= @efac.fee %>.00 MXN
-    </p>
-
-    <p>
-      <strong>Nombre del instructor:</strong>
-      <%= @efac.instructor_name %>
-    </p>
-
-    <p>
-      <strong>Curriculum del instructor:</strong>
-      <%= link_to 'Descargar Archivo', @efac.instructor_resumee, target: :_blank %>
+      <strong>Instructores</strong>
+      <% @efac.instructors.each do |inst| %>
+        <%= inst.name %>
+      <% end %>
     </p>
     <br>
-
+    <p>
+      <strong>Cuota:</strong>
+      $
+      <%= @efac.fee %>
+    </p>
     <p>
       <strong>Estado:</strong>
       <% if @efac.aproved? %>
