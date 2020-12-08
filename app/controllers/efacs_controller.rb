@@ -1,6 +1,6 @@
 class EfacsController < ApplicationController
   before_action :set_efac, only: [:show, :edit, :update, :destroy, :present, :aprove ]
-
+  skip_before_action :verify_authenticity_token, :only => [:reject]
   # GET /efacs
   # GET /efacs.json
   def index
@@ -41,9 +41,9 @@ class EfacsController < ApplicationController
   def create
     #@efac = Efac.new(efac_params)
     @efac = current_user.efacs.create(efac_params)
-    @efac.update sent: false, responsible_name: current_user.name, state: "editing"
     respond_to do |format|
       if @efac.save then
+        @efac.update sent: false, responsible_name: current_user.name, state: "editing"
         format.html { redirect_to @efac, notice: 'El Evento Formativo se ha creado con éxito.' }
         format.json { render :show, status: :created, location: @efac }
       else
@@ -114,9 +114,9 @@ class EfacsController < ApplicationController
 
         format.html { redirect_to efacs_url, notice: 'El Evento Formativo se ha rechazado.' }
         # Enviar un correo
-        EvaluateMailer.reject_email(@efac.user, @efac.name).deliver_later
       end
     end
+    EvaluateMailer.reject_email(@efac.user, @efac.name, @efac.reason).deliver_later
   end
 
   def show_aproved
