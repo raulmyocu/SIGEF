@@ -58,6 +58,13 @@
         <div>
           <%= f.text_area :experience, :cols => 40, :rows => 10 %>
         </div>
+
+        <div>
+          <%= f.label "Currículum del Instructor" %>
+        </div>
+        <div>
+          <%= f.file_field :resume %>
+        </div>
           <%= content_tag('a', 'Borrar Instructor',
                           id: "del-"+f.index.to_s,
                           class: "badge badge-danger align-self-center") %>
