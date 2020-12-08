@@ -73,7 +73,23 @@
 
     <p>
       <strong>Estado:</strong>
-      <%= @efac.state %>
+      <% if @efac.aproved? %>
+      <p style="color: green">
+        Aprobado
+      </p>
+      <% elsif @efac.rejected? %>
+      <p style="color: red">
+        Rechazado
+      </p>
+      <% elsif @efac.waiting? %>
+      <p style="color: var(--mainBlue)">
+        Esperando
+      </p>
+      <% else %>
+      <p style="color: var(--mainBlue)">
+        Editando
+      </p>
+      <% end %>
     </p>
 
     <% if @efac.reason %>
