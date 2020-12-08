@@ -102,7 +102,7 @@
     </div>
   <div>
 
-  <% if not @efac.sent and current_user.responsible? %>
+  <% if not @efac.sent and current_user.responsible? and (@efac.editing? or @efac.rejected?) %>
   <div class="botones">
 
     <%=link_to("Editar", edit_efac_path(@efac), class: "editar")%>
