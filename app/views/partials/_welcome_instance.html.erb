@@ -1,0 +1,24 @@
+<br><br>
+<div class="home">
+    <div class="home-container">
+        <strong>Eventos formativos aprobados</strong>
+        <h1>
+            <%= Efac.where(state: "aproved", instance_id: current_user.id).count%>
+        </h1>
+        
+    </div>
+    <div class="home-container">
+        <strong>Eventos formativos pendientes a evaluar </strong>
+        <h1>
+            <%= Efac.where(state: "waiting", instance_id: current_user.id).count%>
+        </h1>
+        
+    </div>
+    <div class="home-container">
+        <strong>Mis eventos formativos aprobados </strong>
+        <h1>
+            <%= Efac.where(state: "aproved", user_id: current_user.id).count%>
+        </h1>
+    </div>
+</div>
+    

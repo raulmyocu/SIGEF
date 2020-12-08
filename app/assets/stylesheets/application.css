@@ -212,3 +212,28 @@ a:hover {
     padding: 3rem;
     background-color: var(--mainLight);
 }
+
+.home {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2rem;
+}
+
+.home-container {
+    background-color: white;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.home-container h1 {
+    color: var(--mainBlue);
+    font-size: 10rem;
+}
+
+.separados {
+    display: flex;
+    justify-content: space-between;
+}
+
