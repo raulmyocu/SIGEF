@@ -1,26 +1,14 @@
 <div class="side-bar">
     <li>
-      <a  href="">
+      <%= link_to root_path do %>
         <i class="icon-side-bar fas fa-home"></i>
         <p>Inicio</p>
-      </a>
+      <% end %>
     </li>
     <li>
-      <a href="">
-        <i class="icon-side-bar fas fa-edit"></i>
-        <p>Responsables </p>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="icon-side-bar fas fa-copy"></i>
-        <p>Instancias responsables</p>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="icon-side-bar fas fa-vote-yea"></i>
-        <p>Instructores</p>
-      </a>
+      <%= link_to users_path do %>
+        <i class="icon-side-bar fas fa-user"></i>
+        <p>Usuarios</p>
+      <% end %>
     </li>
 </div>

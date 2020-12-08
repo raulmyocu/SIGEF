@@ -1,5 +1,5 @@
 
-<div class="top-bar">    
+<div class="top-bar">
   <% if user_signed_in? %>
   <div>
     <h2> <%= title %></h2>
@@ -17,7 +17,9 @@
         &nbsp; <%= current_user.name %>
       </button>
       <div class="dropdown-content">
-        <a href="">Opciones</a>
+        <% if current_user.admin? %>
+          <%= link_to 'Opciones', edit_user_path(current_user) %>
+        <% end %>
         <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
       </div>
     </div>
