@@ -11,11 +11,20 @@ class EfacsController < ApplicationController
     elsif current_user.instance?
       @efacs = Efac.where(sent: true, instance_id: current_user.id)
     end
+    
   end
 
   # GET /efacs/1
   # GET /efacs/1.json
   def show
+    respond_to do |format| 
+      format.html 
+      format.json
+      format.pdf { 
+        render template: 'efacs/reporte', 
+        pdf: 'Reporte' 
+      }
+    end 
   end
 
   # GET /efacs/new

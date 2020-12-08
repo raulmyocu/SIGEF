@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @efac.name %></title>
+    <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+</head>
+<body>
+    <div class="document">
+
+        <h1>
+            Proyecto de evento formativo: <%= @efac.name %>
+        </h1>
+        <hr>
+
+        <h2>Información general</h2>
+        
+        <p>
+            <strong>
+                Responsable: 
+            </strong>
+            <%= @efac.responsible_name %>
+        </p>
+        <p>
+            <strong>
+                Instancia responsable: 
+            </strong>
+            <%= User.find(@efac.instance_id).name  %>
+        </p>
+        <p>
+            <strong>
+                Duración: 
+            </strong>
+            <%= @efac.duration  %> horas
+        </p>
+        <p>
+            <strong>
+                Cuota: 
+            </strong>
+            $<%= @efac.fee %>.00 MXN
+        </p>
+        <p>
+            <strong>Tipo didáctico:</strong>
+            <%= @efac.content_type %>
+        </p>
+        <p>
+            <strong>Modality:</strong>
+            <%= @efac.modality %>
+        </p>
+        <br>
+        <h2>Información del evento formativo</h2>
+        <p>
+            <strong>
+                Objetivos: 
+            </strong>
+            <br>
+            <%= @efac.objectives  %>
+        </p>
+        <p>
+            <strong>
+                Requisitos de participación: 
+            </strong>
+            <br>
+            <%= @efac.participation_requirements %>
+        </p>
+        <p>
+            <strong>
+                Requisitos de acreditación: 
+            </strong>
+            <br>
+            <%= @efac.acreditation_requirements %>
+        </p>
+
+
+        <p>
+            <strong>Eval method:</strong>
+            <br>
+            <%= @efac.eval_method %>
+        </p>
+
+        <p>
+            <strong>Resources:</strong>
+            <br>
+            <%= @efac.resources %>
+        </p>
+
+        <p>
+            <strong>References:</strong>
+            <br>
+            <%= @efac.references %>
+        </p>
+
+        <p>
+            <strong>Utility:</strong>
+            <br>
+            <%= @efac.utility %>
+        </p>
+        
+
+        <br>
+        <h2>Información del instructor</h2>
+
+        <p>
+            <strong>
+                Nombre del instructor: 
+            </strong>
+            <%= @efac.instructor_name %>
+        </p>
+    </div>
+
+        
+
+</body>
+</html>
