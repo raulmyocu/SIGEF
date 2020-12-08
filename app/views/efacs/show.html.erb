@@ -98,6 +98,7 @@
 
   <% if current_user.instance? %>
     <div class="botones">
+        <%= link_to 'Ver solicitud',  efac_path(@efac, :format => 'pdf'), class: "editar", target: :_blank %>
         <%=link_to("Aprobar", efac_aprove_path(@efac), data: { confirm: '¿Seguro que desea aprobar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
         <a class="rechazar" data-toggle="modal" data-target="#confirmation">Rechazar</a>
 
