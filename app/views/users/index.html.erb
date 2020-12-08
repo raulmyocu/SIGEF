@@ -26,7 +26,7 @@
       Editar Usuario
       <% end %>
       <% if user != current_user %>
-      <%= link_to  "Eliminar Usuario", user, method: :delete %>
+      <%= link_to  "Eliminar Usuario", user, data: { confirm: '¿Seguro que desea eliminar el usuario?'}, method: :delete %>
       <% end %>
     </div>
   </div>
