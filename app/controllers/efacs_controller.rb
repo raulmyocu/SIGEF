@@ -4,7 +4,7 @@ class EfacsController < ApplicationController
   # GET /efacs
   # GET /efacs.json
   def index
-    if current_user.permission.eql?("responsible") 
+    if current_user.permission.eql?("responsible")
       @efacs = current_user.efacs
     elsif current_user.permission.eql?("admin")
       @efacs = Efac.all
@@ -41,9 +41,7 @@ class EfacsController < ApplicationController
   def create
     #@efac = Efac.new(efac_params)
     @efac = current_user.efacs.create(efac_params)
-    @efac.update(sent: false)
-    @efac.update(responsible_name: current_user.name)
-    @efac.update(state: "editing")
+    @efac.update sent: false, responsible_name: current_user.name, state: "editing"
     respond_to do |format|
       if @efac.save then
         format.html { redirect_to @efac, notice: 'El Evento Formativo se ha creado con éxito.' }
@@ -67,11 +65,11 @@ class EfacsController < ApplicationController
           format.html { render :edit }
           format.json { render json: @efac.errors, status: :unprocessable_entity }
         end
-      else 
+      else
         format.html { redirect_to @efac, alert: 'El Evento formativo no puede ser editando si esta en revision.' }
         format.json { render :show, status: :ok, location: @efac }
       end
-    end 
+    end
   end
 
   # DELETE /efacs/1
@@ -83,7 +81,7 @@ class EfacsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def present
     @efac.update_attribute(:sent, true)
     @efac.update_attribute(:state, "waiting")
@@ -98,28 +96,28 @@ class EfacsController < ApplicationController
     if @efac.sent and @efac.instance_id.eql?(current_user.id) then
       @efac.update_attribute(:state, "aproved")
       @efac.update_attribute(:sent, false)
-      
+
       respond_to do |format|
         format.html { redirect_to efacs_url, notice: 'El Evento Formativo se ha aprobado.' }
       end
       # Enviar un correo
       EvaluateMailer.approve_email(@efac.user, @efac.name).deliver_later
-    end 
-  end 
+    end
+  end
   def reject
     @efac = Efac.find(params[:rejection][:id])
-    respond_to do |format| 
+    respond_to do |format|
       if @efac.sent and @efac.instance_id.eql?(current_user.id) then
         @efac.update_attribute(:state, "rejected")
         @efac.update_attribute(:sent, false)
         @efac.update_attribute(:reason, params[:rejection][:reason])
-        
+
         format.html { redirect_to efacs_url, notice: 'El Evento Formativo se ha rechazado.' }
         # Enviar un correo
         EvaluateMailer.reject_email(@efac.user, @efac.name).deliver_later
-      end 
-    end 
-  end 
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -127,7 +125,7 @@ class EfacsController < ApplicationController
       @efac = Efac.find(params[:id])
     end
 
-   
+
 
     # Only allow a list of trusted parameters through.
     def efac_params

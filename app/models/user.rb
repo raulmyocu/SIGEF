@@ -6,4 +6,18 @@ class User < ApplicationRecord
   enum permission: [ :admin, :instance, :responsible, :instructor ]
 
   has_many :efacs
+
+  def role
+    # Nombre en español del tipo de usuario
+    if self.admin?
+      "Administrador"
+    elsif self.instance?
+      "Instancia"
+    elsif self.responsible?
+      "Responsable"
+    else
+      "Instructor"
+    end
+  end
+
 end
