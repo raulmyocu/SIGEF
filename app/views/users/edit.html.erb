@@ -27,10 +27,6 @@
       <%= form.select :permission, User.permissions.keys.map {|role| [role.titleize,role]}, {}, {class: "form-control"} %>
     </div>
     <div>
-      <%= form.hidden_field :password, :value => Devise.friendly_token.first(8) %>
-      <%= form.hidden_field :nologs, :value => false %>
-    </div>
-    <div>
       <br>
       <%= button_tag(type: 'submit', class: "btn btn-outline-primary") do %>
         <i class="icon-ok icon-white"></i> Guardar
