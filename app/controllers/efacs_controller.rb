@@ -121,7 +121,7 @@ class EfacsController < ApplicationController
 
   def show_aproved
     @efacs = Efac.where(state: "aproved", instance_id: current_user.id)
-  end 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -140,25 +140,23 @@ class EfacsController < ApplicationController
                                    :resources_availability,
                                    :fee, :content, :instance_id, :state,
                                    instructors_attributes: [:name, :experience,
-                                                            :id, :_destroy],
+                                                            :id, :_destroy,
+                                                            :resume],
                                   )
-      puts "***************************"
-      puts parameters["instructors_attributes"]
 
-      missing_indexes = (0...@efac.instructors.length).to_a
-      parameters["instructors_attributes"].each do |k, param|
-        missing_indexes.delete(k.to_i)
+      if @efac then
+        missing_indexes = (0...@efac.instructors.length).to_a
+        parameters["instructors_attributes"].each do |k, param|
+          missing_indexes.delete(k.to_i)
+        end
+        ActionController::Parameters.permit_all_parameters = true
+        missing_indexes.each do |index|
+          param = ActionController::Parameters.new(id: @efac.instructors[index].id,
+                                                  _destroy: true)
+          parameters["instructors_attributes"][index] = param
+        end
+        ActionController::Parameters.permit_all_parameters = false
       end
-      ActionController::Parameters.permit_all_parameters = true
-      missing_indexes.each do |index|
-        param = ActionController::Parameters.new(id: @efac.instructors[index].id,
-                                                _destroy: true)
-        parameters["instructors_attributes"][index] = param
-      end
-      ActionController::Parameters.permit_all_parameters = false
-
-      puts "***************************"
-      puts parameters["instructors_attributes"]
 
       return parameters
     end
