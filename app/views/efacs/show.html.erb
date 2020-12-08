@@ -25,54 +25,54 @@
       <%= @efac.objectives %>
     </p>
     <p>
-      <strong>Duracion:</strong>
+      <strong>Duración:</strong>
       <%= @efac.duration %> horas
     </p>
 
     <br>
 
     <p>
-      <strong>Requisitos de participacion:</strong>
+      <strong>Requisitos de participación:</strong>
       <%= @efac.participation_requirements %>
     </p>
     <br>
     <p>
-      <strong>Acreditation requirements:</strong>
+      <strong>Requisitos de acreditación:</strong>
       <br>
       <%= @efac.acreditation_requirements %>
     </p>
     <br>
 
     <p>
-      <strong>Operative conditions:</strong>
+      <strong>Condiciones operativo:</strong>
       <br>
       <%= @efac.operative_conditions %>
     </p>
     <br>
     <p>
-      <strong>Resources availability:</strong>
+      <strong>Disponibilidad de recursos:</strong>
       <br>
       <%= @efac.resources_availability %>
     </p>
     <br>
     <p>
-      <strong>Fee:</strong>
-      <%= @efac.fee %>
+      <strong>Cuota:</strong>
+      $ <%= @efac.fee %>.00 MXN
     </p>
 
     <p>
-      <strong>Instructor name:</strong>
+      <strong>Nombre del instructor:</strong>
       <%= @efac.instructor_name %>
     </p>
 
     <p>
-      <strong>Instructor resumee:</strong>
+      <strong>Curriculum del instructor:</strong>
       <%= link_to 'Descargar Archivo', @efac.instructor_resumee, target: :_blank %>
     </p>
     <br>
 
     <p>
-      <strong>State:</strong>
+      <strong>Estado:</strong>
       <%= @efac.state %>
     </p>
 
@@ -86,17 +86,18 @@
     </div>
   <div>
 
-  <% if not @efac.sent %>
+  <% if not @efac.sent and current_user.responsible? %>
   <div class="botones">
 
     <%=link_to("Editar", edit_efac_path(@efac), class: "editar")%>
+    <%= link_to("Eliminar",  @efac, data: { confirm: '¿Seguro que desea eliminar el Evento Formativo?'}, :method => :delete, class: "rechazar" ) %>
     <%=link_to("Presentar", efac_present_path(@efac), data: { confirm: '¿Seguro que desea presentar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
 
   </div>
   <% end%>
 
 
-  <% if current_user.instance? %>
+  <% if current_user.instance? and @efac.waiting?%>
     <div class="botones">
         <%= link_to 'Ver solicitud',  efac_path(@efac, :format => 'pdf'), class: "editar", target: :_blank %>
         <%=link_to("Aprobar", efac_aprove_path(@efac), data: { confirm: '¿Seguro que desea aprobar el Evento Formativo?'}, :method => :post, class: "aprobar")%>
@@ -107,37 +108,37 @@
   <% end %>
     <div class="side-2">
       <p>
-        <strong>Modality:</strong>
+        <strong>Modalidad:</strong>
         <%= @efac.modality %>
       </p>
       <br>
       <p>
-        <strong>Content type:</strong>
+        <strong>Tipo didáctico:</strong>
         <%= @efac.content_type %>
       </p>
 
       <br>
 
       <p>
-        <strong>Eval method:</strong>
+        <strong>Método de evaluación:</strong>
         <%= @efac.eval_method %>
       </p>
       <br>
 
       <p>
-        <strong>Resources:</strong>
+        <strong>Recursos:</strong>
         <%= @efac.resources %>
       </p>
       <br>
 
       <p>
-        <strong>References:</strong>
+        <strong>Referencias:</strong>
         <%= @efac.references %>
       </p>
       <br>
 
       <p>
-        <strong>Utility:</strong>
+        <strong>Utilidad:</strong>
         <%= @efac.utility %>
       </p>
 

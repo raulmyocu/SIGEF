@@ -1,14 +1,16 @@
   <h1>Bienvenido a SIGEF </h1>
   <br>
-  <h5><%= link_to  "Cerrar Sesión", destroy_user_session_path, method: :delete %></h5>
 
   <% if current_user.instance?%>
-
-
+  <%=render "partials/welcome_instance"%>
 
   <% elsif current_user.admin? %>
+  <%=render "partials/welcome_admin"%>
 
   <% elsif current_user.responsible? %>
+  <%=render "partials/welcome_responsible"%>
+
+
 
 
   <% end %>

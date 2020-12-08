@@ -1,0 +1,17 @@
+<br><br>
+<div class="home">
+    <div class="home-container">
+        <strong>Número de responsables </strong>
+        <h1>
+            <%= User.where(permission: "responsible").count%>
+        </h1>
+        
+    </div>
+    <div class="home-container">
+        <strong>Número de instancias responsables </strong>
+        <h1>
+            <%= User.where(permission: "instance").count%>
+        </h1>
+    </div>
+</div>
+    

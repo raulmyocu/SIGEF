@@ -119,6 +119,10 @@ class EfacsController < ApplicationController
     end
   end
 
+  def show_aproved
+    @efacs = Efac.where(state: "aproved", instance_id: current_user.id)
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_efac

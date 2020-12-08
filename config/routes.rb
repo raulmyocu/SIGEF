@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post 'efacs/aprove/:id', to: "efacs#aprove", as: "efac_aprove"
   post 'efacs/reject', to: "efacs#reject", as: "efac_reject"
 
+  get 'show_aproved', to: 'efacs#show_aproved', as: 'efacs_aproved'
   root to: 'home#index'
 end
