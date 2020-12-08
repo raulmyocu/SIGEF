@@ -1,23 +1,21 @@
-<!-- Page content -->
-<div class="w3-container">
-
-  <div class="container-fluid" style="margin-top: 43px;">
-    <div class="jumbotron jumbotron-fluid"">
-      <div class="container">
-        <h1>SIGEF</h1>
-        <br>
-    </div>
-  </div>
+<div class="welcome-banner">
+  <h1>SIGEF</h1>
 </div>
 
-<div class='container'>
+<% if notice %>
+  <p class="alert alert-primary"><%= notice %></p>
+<%end%>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<%end%> 
+
+<div class='inicio-sesion'>
   <h1>Cambie su contraseña</h1>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.hidden_field :reset_password_token %>
 
-    <div class="field">
       <%= label_tag(type: 'tag') do %>
        <br>
        <i class="icon-ok icon-white"></i> Nueva contraseña
@@ -25,17 +23,13 @@
       <% if @minimum_password_length %>
         <em>(Mínimo <%= @minimum_password_length %> caracteres)</em><br />
       <% end %>
-      <%= f.password_field :password, class: 'form-control', autofocus: true, autocomplete: "current-password",  :style => "width:70%"  %>
-    </div>
-
-    <div class="field">
+      <%= f.password_field :password, class: 'form-control', autofocus: true, autocomplete: "current-password" %>
+    <br>
       <%= label_tag(type: 'tag') do %>
        <i class="icon-ok icon-white"></i> Confirmar nueva contraseña
        <% end %>
        <br>
-      <%= f.password_field :password_confirmation, class: 'form-control', autofocus: true, autocomplete: "new-password",  :style => "width:70%" %>
-    </div>
-
+      <%= f.password_field :password_confirmation, class: 'form-control', autofocus: true, autocomplete: "new-password" %>
     <div>
         <br>
         <%= button_tag(type: 'submit', class: "btn btn-outline-secondary") do %>
