@@ -1,9 +1,33 @@
+<%= link_to new_user_path do %>
+  <i class="fas fa-user-plus"></i>
+  Nuevo Usuario
+<% end %>
+
+<br>
+
 <% @users.each do |user| %>
-  <p><b> <%= user.name %> </b></p>
-  <p><i> <%= user.permission %> </i></p>
-  <p> <%= user.email %> </p>
-  <%= link_to  "Editar Usuario", edit_user_path(user.id) %>
-  <% if user != current_user %>
-    <%= link_to  "Eliminar Usuario", user, method: :delete %>
-  <% end %>
+<div class="efac-container">
+  <div class="">
+    <h4>
+      <i class="fas fa-user"></i>&nbsp;
+      <%= user.name %>
+    </h4>
+    <br>
+    <h5><i><%= user.role %></i></h5>
+    <br>
+    <p>
+      Correo Electrónico: <%= user.email %>
+    </p>
+    <br>
+
+    <%= link_to edit_user_path(user.id) do %>
+      <i class="fas fa-pen"></i>
+      Editar Usuario
+    <% end %>
+
+    <% if user != current_user %>
+      <%= link_to  "Eliminar Usuario", user, method: :delete %>
+    <% end %>
+  </div>
+</div>
 <% end %>

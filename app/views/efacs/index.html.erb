@@ -19,7 +19,6 @@
     </p>
     <br>
 
-    
 
     <% if efac.aproved? %>
       <h5 style="color: green">
@@ -44,7 +43,10 @@
 </div>
 
 <% end %>
-
+<br><br>
 <% if current_user.responsible?%>
-  <%= link_to 'New Efac', new_efac_path %>
+  <%= link_to new_efac_path do %>
+    <i class="fas fa-plus"></i>
+    Nuevo Efac
+  <% end %>
 <% end %>
