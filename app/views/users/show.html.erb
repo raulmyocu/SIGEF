@@ -1,7 +1,28 @@
-<p><b> <%= @user.name %> </b></p>
-<p><i> <%= @user.permission %> </i></p>
-<p> <%= @user.email %> </p>
-<%= link_to  "Editar Usuario", edit_user_path(@user.id) %>
-<% if @user != current_user %>
-  <%= link_to  "Eliminar Usuario", @user, method: :delete %>
-<% end %>
+ <!-- Page content -->
+ <div class="w3-container">
+
+   <div class="container-fluid">
+     <div class="jumbotron jumbotron-fluid"">
+       <div class="container">
+         <p>
+           <strong>Nombre:</strong>
+           <%= @user.name%>
+           <strong>Rol:</strong>
+           <i> <%= @user.permission %> </i>
+         </p>
+          <p>
+           <strong>Correo electrónico:</strong>
+           <%= @user.email%>
+         </p>
+     </div>
+   </div>
+  </div>
+
+
+   <div class="container">
+
+
+     <%= link_to '<button type="button" class="btn btn-outline-secondary">Volver</button>'.html_safe, users_path %>
+   </div>
+
+  </div>

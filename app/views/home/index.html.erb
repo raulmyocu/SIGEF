@@ -1,26 +1,15 @@
+  <h1>Bienvenido a SIGEF </h1>
+  <br>
+  <h5><%= link_to  "Cerrar Sesión", destroy_user_session_path, method: :delete %></h5>
 
   <% if current_user.instance?%>
 
 
-  <h1>Bienvenido a SIGEF </h1>
-  <% if user_signed_in? %>
-      <p>Has iniciado sesión</p>
-      <% if current_user.admin? %>
-          <%= link_to  "Ver Usuarios", users_path, method: :get %>
-      <% end %>
-      <%= link_to  "Cerrar Sesión", destroy_user_session_path, method: :delete %>
-  <%else%>
-      <%= link_to  "Iniciar Sesión", new_user_session_path %>
-  <%end%>
-
-
-
-  <p>Find me in app/views/home/index.html.erb</p>
-  <% elsif current_user.responsible? %>
 
   <% elsif current_user.admin? %>
 
-  <% else %>
+  <% elsif current_user.responsible? %>
+
 
   <% end %>
 
