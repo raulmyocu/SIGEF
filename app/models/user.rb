@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum permission: [ :admin, :instance, :responsible, :instructor ]
 
-  has_many :efacs
+  has_many :efacs, dependent: :destroy
 
   def role
     # Nombre en español del tipo de usuario
